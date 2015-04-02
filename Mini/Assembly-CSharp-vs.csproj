@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\ScrollingScript.cs" />
      <Compile Include="Assets\Scripts\ShotScript.cs" />
      <Compile Include="Assets\Scripts\SoundEffectsHelper.cs" />
+     <Compile Include="Assets\Scripts\SpawnPointScript.cs" />
      <Compile Include="Assets\Scripts\SpecialEffectsHelper.cs" />
      <Compile Include="Assets\Scripts\WeaponScript.cs" />
   </ItemGroup>
