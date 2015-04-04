@@ -46,6 +46,7 @@ public class EnemyScript : MonoBehaviour
     }
     else
     {
+/*
       // Auto-fire
       foreach (WeaponScript weapon in weapons)
       {
@@ -55,7 +56,7 @@ public class EnemyScript : MonoBehaviour
           SoundEffectsHelper.Instance.MakeEnemyShotSound();
         }
       }
-
+*/
       // Out of camera?
       if (renderer.IsVisibleFrom(Camera.main) == false)
       {

@@ -24,8 +24,7 @@ public class SpawnPointScript : MonoBehaviour {
 				dir =-1;
 			}
 			move.direction = new Vector2(dir,0);
-			Rigidbody2D rigi = newMon.GetComponent<Rigidbody2D>();
-			rigi.mass = Random.Range(1.0f,1000000.0f);
+
 		}
 	}
 

@@ -8,22 +8,56 @@ public class PlayerScript : MonoBehaviour
   /// <summary>
   /// 0 - The speed of the ship
   /// </summary>
-  public Vector2 speed = new Vector2(25, 25);
-
+	public float speed = 25;
+	int jump = 1;
+	int jumptimer = 0;
+	public float jumpheight = 50;
   // 1 - Store the movement
   private Vector2 movement;
+	float inputX=0;
+	float playerscale =0;
+	float facedir =1;
+	void Start(){
+		playerscale = transform.localScale.x;
 
+	}
   void Update()
   {
     // 2 - Retrieve axis information
-    float inputX = Input.GetAxis("Horizontal");
+    inputX = Input.GetAxis("Horizontal");
     float inputY = Input.GetAxis("Vertical");
+		Debug.Log (inputX);
+		if (jump == 1) {
+			jumptimer +=1;
+			if(jumptimer >=50){
+				jump = 0;
+				jumptimer = 0;
+			}
+		}
+		if(Input.GetKeyDown("up")){
+			if(jump == 0){
+				rigidbody2D.AddForce(new Vector2(0,jumpheight), ForceMode2D.Impulse);
+				jump =1;
+			}
 
+		}
+
+	//player face direction
+		if (inputX < 0) {
+			//face left
+			facedir = -1;
+		}else{
+			//face right
+			facedir = 1;
+		}
+		transform.localScale = new Vector3(playerscale*facedir,transform.localScale.y);
+
+/*
     // 3 - Movement per direction
     movement = new Vector2(
-      speed.x * inputX,
-      speed.y * inputY);
-
+      speed * inputX,
+      0);
+*/
     // 5 - Shooting
     bool shoot = Input.GetButtonDown("Fire1");
     shoot |= Input.GetButtonDown("Fire2"); // For Mac users, ctrl + arrow is a bad idea
@@ -55,7 +89,7 @@ public class PlayerScript : MonoBehaviour
   void FixedUpdate()
   {
     // 4 - Move the game object
-    rigidbody2D.velocity = movement;
+		rigidbody2D.velocity = new Vector2 (inputX * speed, rigidbody2D.velocity.y);
   }
 
   void OnDestroy()
