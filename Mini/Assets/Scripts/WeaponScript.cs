@@ -68,8 +68,12 @@ public class WeaponScript : MonoBehaviour
       MoveScript move = shotTransform.gameObject.GetComponent<MoveScript>();
       if (move != null)
       {
-        move.direction = this.transform.right; // towards in 2D space is the right of the sprite
-      }
+		if(this.transform.localScale.x < 0){
+        move.direction = new Vector2(-1,0); // towards in 2D space is the right of the sprite
+		}else{
+		move.direction = new Vector2(1,0);
+		}
+	  }
     }
   }
 

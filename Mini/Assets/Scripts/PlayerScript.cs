@@ -46,7 +46,7 @@ public class PlayerScript : MonoBehaviour
 		if (inputX < 0) {
 			//face left
 			facedir = -1;
-		}else{
+		}else if(inputX>0){
 			//face right
 			facedir = 1;
 		}

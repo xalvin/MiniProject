@@ -18,12 +18,7 @@ public class MoveScript : MonoBehaviour
   public Vector2 direction = new Vector2(-1, 0);
 	
   private Vector2 movement;
-	float myscale =0;
-	float facedir =1;
-	void Start(){
-		myscale = transform.localScale.x;
-		
-	}
+
 
 
   void Update()
@@ -32,15 +27,7 @@ public class MoveScript : MonoBehaviour
     movement = new Vector2(
       speed.x * direction.x,
       speed.y * direction.y);
-		//player face direction
-		if (direction.x < 0) {
-			//face left
-			facedir = 1;
-		}else{
-			//face right
-			facedir = -1;
-		}
-		transform.localScale = new Vector3(myscale*facedir,transform.localScale.y);
+
 
   }
 
